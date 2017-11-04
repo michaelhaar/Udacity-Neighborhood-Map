@@ -4,13 +4,16 @@
     <meta charset="utf-8">
     <title>Udacity Neighborhood Map</title>
 
-    <link rel="stylesheet" href="/css/master.css">
+    <link rel="stylesheet" href="css/master.css">
   </head>
   <body>
-    <h1>Hello, World!</h1>
+    <div id="map"></div>
 
-    <script src="js/map_markers.js"></script>
+    <script src="js/locations.js"></script>
     <script src="js/map_styles.js"></script>
     <script src="js/app.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVDkwXZOwpJjqlXSwnNFHUTtnTcEtnk80&v=3&callback=initMap">
+    </script>
   </body>
 </html>
