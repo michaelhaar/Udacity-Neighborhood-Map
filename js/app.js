@@ -1,21 +1,10 @@
 // TODO rewrite the following sentence
 // This function is defined as a callback in the index.html file
 function initMap() {
-
   var map = createMap();
   var markers = addMarkers(map, mylocations);
   zoomToFitMarkers(map, markers)
   addClickListeners(markers)
-
-  // var largeInfowindow = new google.maps.InfoWindow();
-
-
-
-    // Create an onclick event to open an infowindow at each marker.
-    // marker.addListener('click', function() {
-    //   populateInfoWindow(this, largeInfowindow);
-    // });
-
 }
 
 function createMap() {
