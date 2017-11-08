@@ -31,10 +31,16 @@ class Location {
     this.marker.addListener('click', function() {
       self.viewModel.selectLocation(self)
     });
+  }
 
-    // function() {
-    //   self.infowindow.open(self.targetMap, self.marker);
-    // });
+  showMarker(visibility) {
+    if (visibility === true) {
+      this.marker.setMap(this.targetMap);
+    } else {
+      this.marker.setMap(null)
+      // If map is set to null, the marker will be removed.
+      // see: https://developers.google.com/maps/documentation/javascript/3.exp/reference#Marker
+    }
   }
 
   // populateInfoWindow() {

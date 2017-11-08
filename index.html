@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="css/master.css">
   </head>
   <body>
-    <ul data-bind="foreach: locationList">
+    <p>Plase enter a filter: <input data-bind="textInput: filterInput" /></p>
+    <p>You entered: <span data-bind="text: filterInput"></span></p>
+    <ul data-bind="foreach: filteredList">
       <li data-bind="text: title, click: $parent.selectLocation"></li>
     </ul>
 

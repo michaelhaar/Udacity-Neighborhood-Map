@@ -1,46 +1,119 @@
-// Overall viewmodel for this screen, along with initial state
-function ViewModel() {
-  var self = this; // 'self' is refering to the ViewModel object itself.
+class ViewModel {
+  constructor() {
+    // Initialize KnockoutJS variables
+    this.filterInput = ko.observable("");
+    this.locationList = ko.observableArray(); //init an empty array
 
-  var map = createMap();
-  self.infowindow = new google.maps.InfoWindow();
-  self.infowindow.setContent('Hallo');
+    // Init some Google Maps objects
+    this.map = this.createMap()
+    this.infowindow = new google.maps.InfoWindow();
+    this.infowindow.setContent('Hallo');  // TODO: create the content dynamically
 
-  self.filterInput = ko.observable("");
+    // Load the available locations
+    availableLocations.forEach(function(locationItem){
+      this.locationList.push(new Location(locationItem, this.map, self));
+    }, this);
 
+    // Filtering the LocationList:
+    this.filteredList = ko.computed(function() {
+      var filterStr = this.filterInput().toLowerCase();
+      if (!filterStr) {
+        // no filter will be applied
+        this.showAllMarkers();
+        return this.locationList();
+      } else {
+        // filter the locationsList
+        return ko.utils.arrayFilter(this.locationList(), function(location) {
+          var filterResult = location.title.toLowerCase().includes(filterStr);
+          location.showMarker(filterResult);
+          return filterResult;
+        });
+        // Note: the knockout utility methods are very usefull but I wasn't
+        // able to find them in the official documentation for some reason! :o
+        // I found the arrayFilter method on other websites, thanks to Google.
+        // see: https://stackoverflow.com/questions/20857594/knockout-filtering-on-observable-array
+        // also usefull: http://jsfiddle.net/rniemeyer/vdcUA/
+      }
+    }, this);
+  }
 
-  self.locationList = ko.observableArray(); //init an empty array
-  availableLocations.forEach(function(locationItem){
-    self.locationList.push(new Location(locationItem, map, self));
-  });
+  createMap() {
+    // Constructor creates a new map
+    var map = new google.maps.Map(document.getElementById('map'), {
+      // only center and zoom are required.
+      center: {lat: 47.075004, lng: 15.436732},
+      zoom: 10
+    });
+    return map;
+  }
+
+  showAllMarkers() {
+    this.locationList().forEach(function(locationItem) {
+      locationItem.showMarker(true);
+    })
+  }
+
+  zoomToFitMarkers(targetMap, markers) {
+    var bounds = new google.maps.LatLngBounds();
+    // Extend the boundaries of the map for each marker
+    for (var i = 0; i < markers.length; i++) {
+      bounds.extend(markers[i].position);
+    }
+    // apply the new boundaries to our map
+    targetMap.fitBounds(bounds);
+  }
 
   // The clicked item will be passed as the first parameter
   // see: http://knockoutjs.com/documentation/click-binding.html
-  self.selectLocation = function(clickedLocation) {
-    self.infowindow.open(clickedLocation.targetMap, clickedLocation.marker);
+  selectLocation(clickedLocation) {
+    this.infowindow.open(clickedLocation.targetMap, clickedLocation.marker);
   };
-
 }
 
-function createMap() {
-  // Constructor creates a new map
-  var map = new google.maps.Map(document.getElementById('map'), {
-    // only center and zoom are required.
-    center: {lat: 47.075004, lng: 15.436732},
-    zoom: 10
-  });
-  return map;
-}
 
-function zoomToFitMarkers(targetMap, markers) {
-  var bounds = new google.maps.LatLngBounds();
-  // Extend the boundaries of the map for each marker
-  for (var i = 0; i < markers.length; i++) {
-    bounds.extend(markers[i].position);
-  }
-  // apply the new boundaries to our map
-  targetMap.fitBounds(bounds);
-}
+// // Overall viewmodel for this screen, along with initial state
+// function ViewModel() {
+//
+//
+//
+//   self.infowindow = new google.maps.InfoWindow();
+//   self.infowindow.setContent('Hallo');
+//
+//   self.filterInput = ko.observable("");
+//
+//
+//   self.locationList = ko.observableArray(); //init an empty array
+//   availableLocations.forEach(function(locationItem){
+//     self.locationList.push(new Location(locationItem, map, self));
+//   });
+//
+//   // The clicked item will be passed as the first parameter
+//   // see: http://knockoutjs.com/documentation/click-binding.html
+//   self.selectLocation = function(clickedLocation) {
+//     self.infowindow.open(clickedLocation.targetMap, clickedLocation.marker);
+//   };
+//
+// }
+//
+// function createMap() {
+//   // Constructor creates a new map
+//   var map = new google.maps.Map(document.getElementById('map'), {
+//     // only center and zoom are required.
+//     center: {lat: 47.075004, lng: 15.436732},
+//     zoom: 10
+//   });
+//   return map;
+// }
+//
+// function zoomToFitMarkers(targetMap, markers) {
+//   var bounds = new google.maps.LatLngBounds();
+//   // Extend the boundaries of the map for each marker
+//   for (var i = 0; i < markers.length; i++) {
+//     bounds.extend(markers[i].position);
+//   }
+//   // apply the new boundaries to our map
+//   targetMap.fitBounds(bounds);
+// }
 
 
 // This function is called after the Google Maps Javascript API has been loaded
