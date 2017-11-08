@@ -7,15 +7,23 @@
     <link rel="stylesheet" href="css/master.css">
   </head>
   <body>
+    <ul data-bind="foreach: locationList">
+      <li data-bind="text: title, click: $parent.selectLocation"></li>
+    </ul>
+
     <div id="map"></div>
 
+    <!-- Load Javascript libraries -->
     <script src='js/lib/knockout-3.4.2.js'></script>
-    <script src="js/locations.js"></script>
-    <script src="js/map_styles.js"></script>
-    <script src="js/app.js"></script>
+    <script src='js/lib/jquery-3.2.1.min.js'></script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVDkwXZOwpJjqlXSwnNFHUTtnTcEtnk80&v=3&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVDkwXZOwpJjqlXSwnNFHUTtnTcEtnk80&v=3&callback=startApp">
     </script>
-
+    <!-- Load Javascript files -->
+    <script src="js/locations.js"></script>
+    <script src="js/mapstyles.js"></script>
+    <script src="js/location.js"></script>
+    <script src="js/viewmodel.js"></script>
+    <script src="js/app.js"></script>
   </body>
 </html>

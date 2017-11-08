@@ -1,24 +1,26 @@
-// These are the activities that will be shown to the user.
-// Normally we'd have these in a database instead.
-var mylocations = [
+// These are the activities that are available in my neighborhood.
+// Normally we'd recieve this from the servers database instead.
+// In KnockoutJS this is called the model.
+// see: http://knockoutjs.com/documentation/observables.html
+var availableLocations = [
   {
     title: 'Waldseilgarten Geier',
-    location: {lat: 47.209857, lng: 16.008057}
+    position: {lat: 47.209857, lng: 16.008057}
   },
   {
     title: 'Paragleiten Schöckl',
-    location: {lat: 47.201044, lng: 15.4740111}
+    position: {lat: 47.201044, lng: 15.4740111}
   },
   {
     title: 'Wandern Bärenschützklamm',
-    location: {lat: 47.336009, lng: 15.375015}
+    position: {lat: 47.336009, lng: 15.375015}
   },
   {
     title: 'Schöckl Westgipfel Wanderung',
-    location: {lat: 47.1981282, lng: 15.4599248}
+    position: {lat: 47.1981282, lng: 15.4599248}
   },
   {
     title: 'Raabklamm Wanderung',
-    location: {lat: 47.2166667, lng: 15.5666667}
+    position: {lat: 47.2166667, lng: 15.5666667}
   }
 ];
