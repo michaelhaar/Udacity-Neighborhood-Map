@@ -1,20 +1,14 @@
 class Location {
 
-  constructor(locationData, map, viewModel) {
+  constructor(locationData, map, infowindow) {
     this.title = locationData.title;
     this.position = locationData.position;
     // every location object holds a reference to the map object
-    // and the Viewmodel:
+    // and the inf-window:
     this.targetMap = map;
-    this.viewModel = viewModel;
-    console.log(viewModel);
+    this.infowindow = infowindow;
 
     this.createMarker(); // create a marker for the map
-  }
-
-  createInfowindow() {
-    this.infowindow = new google.maps.InfoWindow();
-    this.infowindow.setContent('Hallo');
   }
 
   createMarker() {
@@ -29,8 +23,19 @@ class Location {
     // add a click listener to the marker:
     var self = this; // cool trick to access current object in callback func.
     this.marker.addListener('click', function() {
-      self.viewModel.selectLocation(self)
+      self.showInfowindow(self)
     });
+  }
+
+  setInfowindowContent() {
+    this.infowindow = new google.maps.InfoWindow();
+    this.infowindow.setContent('Hallo');
+  }
+
+  // The clicked item will be passed as the first parameter
+  // see: http://knockoutjs.com/documentation/click-binding.html
+  showInfowindow(clickedLocation) {
+    clickedLocation.infowindow.open(clickedLocation.targetMap, clickedLocation.marker);
   }
 
   showMarker(visibility) {

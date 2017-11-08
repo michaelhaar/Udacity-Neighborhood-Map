@@ -11,7 +11,7 @@ class ViewModel {
 
     // Load the available locations
     availableLocations.forEach(function(locationItem){
-      this.locationList.push(new Location(locationItem, this.map, self));
+      this.locationList.push(new Location(locationItem, this.map, this.infowindow));
     }, this);
 
     // Filtering the LocationList:
@@ -36,6 +36,14 @@ class ViewModel {
       }
     }, this);
   }
+
+  // The clicked item will be passed as the first parameter
+  // see: http://knockoutjs.com/documentation/click-binding.html
+  // selectLocation(clickedLocation) {
+  //   console.log(clickedLocation);
+  //   console.log(this);
+  //   this.infowindow.open(clickedLocation.targetMap, clickedLocation.marker);
+  // }
 
   createMap() {
     // Constructor creates a new map
@@ -62,12 +70,6 @@ class ViewModel {
     // apply the new boundaries to our map
     targetMap.fitBounds(bounds);
   }
-
-  // The clicked item will be passed as the first parameter
-  // see: http://knockoutjs.com/documentation/click-binding.html
-  selectLocation(clickedLocation) {
-    this.infowindow.open(clickedLocation.targetMap, clickedLocation.marker);
-  };
 }
 
 
