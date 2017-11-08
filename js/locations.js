@@ -4,23 +4,23 @@
 // see: http://knockoutjs.com/documentation/observables.html
 var availableLocations = [
   {
-    title: 'Waldseilgarten Geier',
-    position: {lat: 47.209857, lng: 16.008057}
+    title: 'Süße Luise',
+    position: {lat: 47.0746442, lng: 15.4309591}
   },
   {
-    title: 'Paragleiten Schöckl',
-    position: {lat: 47.201044, lng: 15.4740111}
+    title: 'Kunsthauscafé',
+    position: {lat: 47.0710058, lng: 15.433916}
   },
   {
-    title: 'Wandern Bärenschützklamm',
-    position: {lat: 47.336009, lng: 15.375015}
+    title: 'Tribeka',
+    position: {lat: 47.0706002, lng: 15.4347008}
   },
   {
-    title: 'Schöckl Westgipfel Wanderung',
-    position: {lat: 47.1981282, lng: 15.4599248}
+    title: 'Freiblick',
+    position: {lat: 47.0719528, lng: 15.4370591}
   },
   {
-    title: 'Raabklamm Wanderung',
-    position: {lat: 47.2166667, lng: 15.5666667}
+    title: 'aroom',
+    position: {lat: 47.0660154, lng: 15.4525779}
   }
 ];

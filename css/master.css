@@ -6,6 +6,15 @@ body {
   padding: 0;
 }
 
+.infowindow-content {
+  max-width: 250px;
+}
+
+.infowindow-img {
+  max-height: 200px;
+  max-width: 200px;
+}
+
 #map {
   height: 100%;
 }
