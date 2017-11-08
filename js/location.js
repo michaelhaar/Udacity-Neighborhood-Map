@@ -34,14 +34,21 @@ class Location {
 
   // The clicked item will be passed as the first parameter
   // see: http://knockoutjs.com/documentation/click-binding.html
+
   showInfowindow(location) {
+    // TODO I think showInfowindow() would also work with 'this'
     location.infowindow.open(location.targetMap, location.marker);
+    location.bounceMarker();
+  }
+
+  bounceMarker() {
     // trigger marker animation
-    location.marker.setAnimation(google.maps.Animation.BOUNCE);
+    this.marker.setAnimation(google.maps.Animation.BOUNCE);
     // stop marker animation after 3 bounces
+    var self = this;
     window.setTimeout(function() {
-      location.marker.setAnimation(null);
-    }, 3*700)
+      self.marker.setAnimation(null);
+    }, 3*700);
   }
 
   showMarker(visibility) {
