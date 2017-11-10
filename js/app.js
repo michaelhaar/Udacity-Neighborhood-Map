@@ -10,7 +10,7 @@ class ViewModel {
     // Init the some required Google Maps objects.
     // We are using the Google Maps Javascript API.
     // see: https://developers.google.com/maps/documentation/javascript
-    this.map = this.createMap()
+    this.map = this.createMap();
     this.infowindow = new google.maps.InfoWindow();
     this.bounds = new google.maps.LatLngBounds();
 
@@ -67,7 +67,7 @@ class ViewModel {
   showAllMarkers() {
     this.locationList().forEach(function(locationItem) {
       locationItem.showMarker(true);
-    })
+    });
   }
 
   /**

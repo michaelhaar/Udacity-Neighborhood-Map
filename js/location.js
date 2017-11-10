@@ -111,7 +111,7 @@ class Location {
     // add a click listener to the marker:
     var self = this; // cool trick to access current object in callback func.
     this.marker.addListener('click', function() {
-      self.showInfowindow()
+      self.showInfowindow();
     });
   }
 
@@ -139,7 +139,7 @@ class Location {
     if (visibility === true) {
       this.marker.setMap(this.targetMap);
     } else {
-      this.marker.setMap(null)
+      this.marker.setMap(null);
       // If map is set to null, the marker will be removed.
       // see: https://developers.google.com/maps/documentation/javascript/3.exp/reference#Marker
     }
@@ -160,12 +160,12 @@ class Location {
    * found a better solution yet!? :)
    */
   populateInfoWindow() {
-    var contentStr = '<div class="infowindow-content"><h3>' + this.title + '</h3>'
+    var contentStr = '<div class="infowindow-content"><h3>' + this.title + '</h3>';
     if (this.foursquareRequestfailed) {
       return contentStr + '<p>Foursquare Data Could Not Be Loaded.</p></div>';
     }
     contentStr += '<p> Name on Foursquare: ' + this.foursquarename + '</p>' +
-      '<p>Address: ' + this.street + ', ' + this.city + '</p>'
+      '<p>Address: ' + this.street + ', ' + this.city + '</p>';
     if (this.foursquarePhotoRequestfailed) {
       return contentStr + '<p>Foursquare Photo Could Not Be Loaded.</p></div>';
     } else {
