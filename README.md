@@ -12,7 +12,13 @@ The app..
 - is responsive and looks great on all screens.📲
 
 ## Usage
-![Click here](https://michi1992.github.io/Udacity-Neighborhood-Map/) to try it yourself.  
+![Click here](https://michi1992.github.io/Udacity-Neighborhood-Map/) to try it yourself.
+
+## Used Frameworks, Libraries and APIs
+- ![Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial)
+- ![Foursquare API](https://developer.foursquare.com/docs)
+- ![KnockoutJS](http://knockoutjs.com/)
+- ![Jquery](https://jquery.com/)
 
 ## Authors
 
