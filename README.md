@@ -1,4 +1,4 @@
-# Udacity-Neighborhood-Map 🗺
+# Udacity-Neighborhood-Map
 
 This project was part of my Full Stack Web Developer Nanodegree at Udacity 🎓. We developed an application featuring a map of your neighborhood and also added functionality to this map including highlighted locations, requesting third-party data about those locations and various ways to browse the content and how to avoid spaghetti-code. 🍝
 
