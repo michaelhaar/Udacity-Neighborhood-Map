@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Udacity Neighborhood Map</title>
 
     <link rel="stylesheet" href="css/master.css">
   </head>
   <body>
-    <p>Plase enter a filter: <input data-bind="textInput: filterInput" /></p>
-    <p>You entered: <span data-bind="text: filterInput"></span></p>
-    <ul data-bind="foreach: filteredList">
-      <li data-bind="text: title, click: showInfowindow"></li>
-    </ul>
-
+    <aside class="sidebar">
+      <p>Please enter a filter: <input data-bind="textInput: filterInput" /></p>
+      <p>You entered: <span data-bind="text: filterInput"></span></p>
+      <ul data-bind="foreach: filteredList">
+        <li data-bind="text: title, click: showInfowindow"></li>
+      </ul>
+    </aside>
     <div id="map"></div>
 
     <!-- Load Javascript libraries -->
