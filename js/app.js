@@ -1,23 +1,27 @@
+/** Class representing a location. */
 class ViewModel {
+  /** Create a ViewModel. **/
   constructor() {
-    // Initialize some KnockoutJS variables/observables
+    // Initialize some KnockoutJS variables/observables.
     // see: http://knockoutjs.com/documentation/observables.html
     this.filterInput = ko.observable("");
     this.locationList = ko.observableArray(); //init an empty array
 
-    // Init some Google Maps objects
+    // Init the some required Google Maps objects.
+    // We are using the Google Maps Javascript API.
     // see: https://developers.google.com/maps/documentation/javascript
     this.map = this.createMap()
     this.infowindow = new google.maps.InfoWindow();
     this.bounds = new google.maps.LatLngBounds();
 
     // Import the available locations and create 'Location' objects.
-    availableLocations.forEach(function(locationItem){
-      this.locationList.push(new Location(locationItem, this.map, this.infowindow));
+    availableLocations.forEach(function(loc){
+      this.locationList.push(
+        new Location(loc.title, loc.position, this.map, this.infowindow));
     }, this);
     this.fitBoundsToLocations(this.locationList());
 
-    // Filter the LocationList:
+    // Filter the LocationList with KnockoutJS:
     this.filteredList = ko.computed(function() {
       var filterStr = this.filterInput().toLowerCase();
       if (!filterStr) {
@@ -43,8 +47,12 @@ class ViewModel {
     }, this);
   }
 
+  /**
+   * Creates a new google.maps.Map instance, which is centered to my city.
+   * see: https://developers.google.com/maps/documentation/javascript/tutorial
+   * @return {Map} the map object.
+   */
   createMap() {
-    // Constructor creates a new map
     var map = new google.maps.Map(document.getElementById('map'), {
       // only center and zoom are required.
       center: {lat: 47.075004, lng: 15.436732},
@@ -53,14 +61,20 @@ class ViewModel {
     return map;
   }
 
+  /**
+   * Displays/Activates the markers for all locations on the map
+   */
   showAllMarkers() {
     this.locationList().forEach(function(locationItem) {
       locationItem.showMarker(true);
     })
   }
 
-  fitBoundsToLocations(locations) {
-    locations.forEach(function(locationItem) {
+  /**
+   * Extend the boundaries of the map so that we can see the active locations.
+   */
+  fitBoundsToLocations(activeLocations) {
+    activeLocations.forEach(function(locationItem) {
       this.bounds.extend(locationItem.position);
     }, this);
     // Extend the boundaries of the map for each marker
@@ -68,7 +82,11 @@ class ViewModel {
   }
 }
 
-// This function is called after the Google Maps Javascript API has been loaded
+/**
+ * This function will kick-off our neighborhood app. It is called after
+ * the Google Maps Javascript API has been successfully loaded.
+ * (This callback is defined in the index.html file)
+ */
 function startApp() {
   ko.applyBindings(new ViewModel()); // start APP :)
 }

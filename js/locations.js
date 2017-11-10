@@ -1,4 +1,4 @@
-// These are the activities that are available in my neighborhood.
+// These coffeehouses are very popular in my neighborhood.
 // Normally we'd recieve this from the servers database instead.
 // In KnockoutJS this is called the model.
 // see: http://knockoutjs.com/documentation/observables.html
