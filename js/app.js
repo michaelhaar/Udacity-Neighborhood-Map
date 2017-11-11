@@ -90,3 +90,7 @@ class ViewModel {
 function startApp() {
   ko.applyBindings(new ViewModel()); // start APP :)
 }
+
+function googleError() {
+  alert("Fatal Error: Google Maps API Could Not be Loaded!!");
+}
