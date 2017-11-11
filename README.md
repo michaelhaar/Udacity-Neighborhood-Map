@@ -14,6 +14,15 @@ The app..
 ## Usage
 [Click here](https://michi1992.github.io/Udacity-Neighborhood-Map/) to try it yourself.
 
+### Running the App locally
+Simply follow the steps below to run the neighborhood map on your own machine:
+1. Clone this repo: `git clone https://github.com/michi1992/Udacity-Neighborhood-Map`
+2. Switch to the new directory: `cd Udacity-Neighborhood-Map`
+3. open the `index.html` file in your browser.
+
+### Note on forking
+When forking this repo please be so kind and replace the API keys (Google and Foursquare) with your own ones. 🙏
+
 ## Used Frameworks, Libraries and APIs
 - [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial)
 - [Foursquare API](https://developer.foursquare.com/docs)
