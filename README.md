@@ -12,7 +12,7 @@ The app..
 - is responsive and looks great on all screens.📲
 
 ## Usage
-[Click here](https://michi1992.github.io/Udacity-Neighborhood-Map/) to try it yourself.
+[Click here](https://michaelhaar.github.io/Udacity-Neighborhood-Map/) to try it yourself.
 
 ### Running the App locally
 Simply follow the steps below to run the neighborhood map on your own machine:
